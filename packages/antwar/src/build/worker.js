@@ -11,7 +11,6 @@ const tmp = require("tmp");
 const touch = require("touch");
 const rimraf = require("rimraf");
 const webpack = require("webpack");
-const url = require("url");
 
 const defaultAntwar = require("../config/default-antwar");
 const defaultWebpack = require("../config/default-webpack");
@@ -113,7 +112,7 @@ function processPage(
       const interactivePath = _path.join(outputPath, `${filename}.js`);
 
       // Attach generated file to template
-      jsFiles.push(url.resolve(publicPath, `/${filename}.js`));
+      jsFiles.push(`${publicPath}/${filename}.js`);
 
       // If the bundle exists already, skip generating
       if (!_fs.existsSync(interactivePath)) {
