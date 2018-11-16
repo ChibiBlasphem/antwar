@@ -2,7 +2,7 @@
   "name": "@chibikookie/antwar-interactive",
   "description": "Interactive extension for Antwar",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
-  "version": "0.29.4",
+  "version": "0.29.5",
   "scripts": {
     "build": "rimraf ./dist && babel ./src --out-dir ./dist",
     "prepublish": "npm run build"
