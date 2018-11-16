@@ -1,8 +1,8 @@
 {
-  "name": "antwar",
+  "name": "@chibikookie/antwar",
   "description": "A static site engine built with React and Webpack",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
-  "version": "0.29.3",
+  "version": "0.29.4",
   "scripts": {
     "build": "rimraf ./dist && babel ./src --out-dir ./dist",
     "prepublish": "npm run build"
@@ -23,6 +23,7 @@
     "rimraf": "^2.6.2",
     "tmp": "0.0.33",
     "touch": "^3.1.0",
+    "url": "^0.11.0",
     "worker-farm": "^1.6.0"
   },
   "devDependencies": {

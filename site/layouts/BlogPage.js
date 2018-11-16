@@ -1,5 +1,5 @@
 import React from "react";
-import { Moment, PrevNext } from "antwar-helpers";
+import { Moment, PrevNext } from "@chibikookie/antwar-helpers";
 import GitHubCorner from "react-github-corner";
 
 import classes from "./BlogPage.scss";

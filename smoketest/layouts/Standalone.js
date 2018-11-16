@@ -1,5 +1,5 @@
 import React from "react";
-import Interactive from "antwar-interactive";
+import Interactive from "@chibikookie/antwar-interactive";
 import ClickMe from "./ClickMe";
 
 const Standalone = ({ section }) => (

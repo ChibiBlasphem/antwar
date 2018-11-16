@@ -11,8 +11,10 @@ const tmp = require("tmp");
 const touch = require("touch");
 const rimraf = require("rimraf");
 const webpack = require("webpack");
+const url = require("url");
 
 const defaultAntwar = require("../config/default-antwar");
+const defaultWebpack = require("../config/default-webpack");
 const mergeConfiguration = require("../libs/merge-configuration");
 
 const cwd = process.cwd();
@@ -25,6 +27,10 @@ module.exports = function writePages(
     defaultAntwar(),
     require(configurationPaths.antwar)(environment)
   );
+  const webpackConfiguration = mergeConfiguration(
+    defaultWebpack({ configurationPaths }),
+    require(configurationPaths.webpack)(environment)
+  );
 
   async.each(
     pages,
@@ -33,6 +39,7 @@ module.exports = function writePages(
         {
           configurationPaths,
           antwarConfiguration,
+          webpackConfiguration,
           page,
           path,
           outputPath,
@@ -48,6 +55,7 @@ function processPage(
   {
     configurationPaths,
     antwarConfiguration,
+    webpackConfiguration,
     page = "",
     outputPath = "",
     path = "",
@@ -57,6 +65,9 @@ function processPage(
 ) {
   const renderPage = require(_path.join(outputPath, "site.js")).renderPage;
   const console = antwarConfiguration.console;
+  const publicPath = webpackConfiguration.output
+    ? webpackConfiguration.output.publicPath
+    : "";
 
   renderPage(page, function(err, { html, page, context } = {}) {
     if (err) {
@@ -102,7 +113,7 @@ function processPage(
       const interactivePath = _path.join(outputPath, `${filename}.js`);
 
       // Attach generated file to template
-      jsFiles.push(`/${filename}.js`);
+      jsFiles.push(url.resolve(publicPath, `/${filename}.js`));
 
       // If the bundle exists already, skip generating
       if (!_fs.existsSync(interactivePath)) {
@@ -152,7 +163,7 @@ function processPage(
         webpackConfig.output = merge(interactiveConfig.output, {
           filename: "[name].js",
           path: outputPath,
-          publicPath: "/",
+          publicPath: publicPath,
           libraryTarget: "umd", // Needed for interactive index exports to work
           globalObject: "this",
         });

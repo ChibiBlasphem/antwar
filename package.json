@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "antwar-monorepo",
+  "name": "@chibikookie/antwar-monorepo",
   "version": "1.0.0",
   "description": "A static site engine built with React and webpack",
   "main": "./packages/antwar/dist",

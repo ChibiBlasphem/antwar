@@ -1,5 +1,5 @@
 import React, { createElement } from "react";
-import Interactive from "antwar-interactive";
+import Interactive from "@chibikookie/antwar-interactive";
 import marksy from "marksy";
 import ClickMe from "./ClickMe";
 

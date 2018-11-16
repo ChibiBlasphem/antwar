@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleAnalytics } from "antwar-helpers";
+import { GoogleAnalytics } from "@chibikookie/antwar-helpers";
 import { Link, NavLink } from "react-router-dom";
 import GitHubCorner from "react-github-corner";
 import PropTypes from "prop-types";
