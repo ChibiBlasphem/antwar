@@ -37,5 +37,8 @@
     "layouts"
   ],
   "license": "MIT",
-  "gitHead": "d1ed738a327b1df7a756c2ce57f8610cb75b2281"
+  "gitHead": "dc2c3e3d96721672b4a33be26a08e35edfc0a4a8",
+  "publishConfig": {
+    "access": "public"
+  }
 }
